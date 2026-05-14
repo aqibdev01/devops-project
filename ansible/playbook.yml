@@ -1,0 +1,10 @@
+---
+- name: Configure DevOps Server
+  hosts: devops_servers
+  become: yes
+  gather_facts: yes
+
+  roles:
+    - docker
+    - kubectl
+    - utilities

@@ -1,0 +1,28 @@
+---
+- name: Install utility packages
+  apt:
+    name:
+      - git
+      - curl
+      - wget
+      - unzip
+      - htop
+      - net-tools
+    state: present
+    update_cache: yes
+
+- name: Install AWS CLI
+  shell: |
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2.zip"
+    unzip -o /tmp/awscliv2.zip -d /tmp
+    /tmp/aws/install --update
+  args:
+    creates: /usr/local/bin/aws
+
+- name: Verify AWS CLI
+  command: aws --version
+  register: aws_version
+
+- name: Print AWS CLI version
+  debug:
+    msg: "{{ aws_version.stdout }}"
