@@ -8,3 +8,4 @@
     - docker
     - kubectl
     - utilities
+    - k3s
