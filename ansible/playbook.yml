@@ -9,3 +9,4 @@
     - kubectl
     - utilities
     - k3s
+    - helm

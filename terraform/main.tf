@@ -176,3 +176,34 @@ resource "aws_eip" "devops_eip" {
     Project = var.project_name
   }
 }
+
+# Additional ingress rules for monitoring
+resource "aws_security_group_rule" "grafana" {
+  type              = "ingress"
+  from_port         = 32000
+  to_port           = 32000
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.devops_sg.id
+  description       = "Grafana NodePort"
+}
+
+resource "aws_security_group_rule" "prometheus" {
+  type              = "ingress"
+  from_port         = 32001
+  to_port           = 32001
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.devops_sg.id
+  description       = "Prometheus NodePort"
+}
+
+resource "aws_security_group_rule" "loki" {
+  type              = "ingress"
+  from_port         = 32002
+  to_port           = 32002
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.devops_sg.id
+  description       = "Loki NodePort"
+}
