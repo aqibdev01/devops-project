@@ -165,3 +165,14 @@ resource "aws_instance" "devops_server" {
     Project = var.project_name
   }
 }
+
+# Elastic IP
+resource "aws_eip" "devops_eip" {
+  instance = aws_instance.devops_server.id
+  domain   = "vpc"
+
+  tags = {
+    Name    = "${var.project_name}-eip"
+    Project = var.project_name
+  }
+}

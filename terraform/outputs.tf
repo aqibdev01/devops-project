@@ -22,3 +22,13 @@ output "ssh_command" {
   description = "SSH command to connect to the server"
   value       = "ssh -i ~/.ssh/devops-key ubuntu@${aws_instance.devops_server.public_ip}"
 }
+
+output "elastic_ip" {
+  description = "Elastic IP address"
+  value       = aws_eip.devops_eip.public_ip
+}
+
+output "ssh_command_eip" {
+  description = "SSH command using Elastic IP"
+  value       = "ssh -i ~/.ssh/devops-key ubuntu@${aws_eip.devops_eip.public_ip}"
+}
