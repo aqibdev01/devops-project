@@ -48,8 +48,8 @@ Security Scans                    Prometheus + Grafana + Loki
 - **Promtail** — log collector
 
 ## Application Access
-- **Todo App:** http://13.206.158.24
-- **Grafana:** http://13.206.158.24:32000
+- **Todo App:** http://<your_elastic_ip>
+- **Grafana:** http://<your_elastic_ip>:32000
 
 ## Project Structure
 devops-project/
